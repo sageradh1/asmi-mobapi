@@ -1,2 +1,8 @@
+webapp_env
+project1_env
+.vscode
 \_\_pycache\_\_
-asmimob_env
+darkflowDirectory
+*.mp4
+*.webm
+*.json
