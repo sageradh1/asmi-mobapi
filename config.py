@@ -37,10 +37,10 @@ class DevelopmentConfig(Config):
     DEBUG = True
     
     #SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
-    SQLALCHEMY_DATABASE_URI = "postgresql://asmi_group:asmipassword123@localhost/asmi_db"
+    SQLALCHEMY_DATABASE_URI = "postgresql://asmi_group:asmipassword123@localhost/asmi_tiktokclone_db"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    DB_NAME = "asmi_db"
+    DB_NAME = "asmi_tiktokclone_db"
     DB_USERNAME = "asmi_group"
     DB_PASSWORD = "asmipassword123"
 
