@@ -20,46 +20,56 @@
 * **Request Header:**
 	 contentType: 'application/json'
 * **Request Body:**
-	{
-		"api_secrect_key":"your valid secret key",
-		"gender":"male/female/other"
-		"username":"username",
-		"firstname":"firstname",
-		"lastname":"lastname",
-		"dateofbirth":"DateTime data",
-		"phonenumber":"9876543210",
-		"email":"user@domain.com"
-	}
+	```javascript
+		{
+			"api_secrect_key":"your valid secret key",
+			"gender":"male/female/other"
+			"username":"username",
+			"firstname":"firstname",
+			"lastname":"lastname",
+			"dateofbirth":"DateTime data",
+			"phonenumber":"9876543210",
+			"email":"user@domain.com"
+		}
+	```
 
 * **Response:**
 	* Success:
+	```javascript
 		{
-			"message":"Success",<br>
-			"data":[<br>
-				"userid":"32",<br>
-				"gender":"male/female/other",<br>
-				"username":"username",<br>
-				"firstname":"firstname",<br>
-				"lastname":"lastname",<br>
-				"dateofbirth":"DateTimedata",<br>
-				"created_datetime":"createdTimedata"<br>
-				"phonenumber":"9876543210",<br>
-				"email":"user@domain.com"<br>
-			]<br>
-		}<br>
+			"message":"Success",
+			"data":[
+				"userid":"32",
+				"gender":"male/female/other",<
+				"username":"username",
+				"firstname":"firstname",
+				"lastname":"lastname",
+				"dateofbirth":"DateTimedata",
+				"created_datetime":"createdTimedata"
+				"phonenumber":"9876543210",
+				"email":"user@domain.com"
+			]
+		}
+	```
 	* Error:
 		When Request header is other than "application/json":
-			{<br>
-				"message": "Invalid Request Header",<br>
-			  	"data": "" <br>
-			}<br>
+		```javascript
+			{
+				"message": "Invalid Request Header",
+			  	"data": ""
+			}
+		```
 		When api_secrect_key is invalid:
-			{<br>
-				"message": "Unauthenticated Request",<br>
-				"data": ""<br>
-			}<br>
+		```javascript
+			{
+				"message": "Unauthenticated Request",
+				"data": ""
+			}
+		```
 		When dataofbirth,phonenumber or email are invalid:
-			{<br>
-				"message": "Invalid Data Format",<br>
-				"data": ""<br>
-			}<br>
+		```javascript
+			{
+				"message": "Invalid Data Format",
+				"data": ""
+			}
+		```
