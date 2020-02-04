@@ -216,7 +216,7 @@
 			  },
 			  "message": "Success"
 			}
-				```
+	```
 	* Error:
 		When the email or userid are invalid:
 		```javascript
