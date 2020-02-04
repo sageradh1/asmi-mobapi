@@ -1,6 +1,5 @@
 from app import db
 from datetime import datetime
-from sqlalchemy_utils import PhoneNumber
 
 
 #Migration title should be "Added Auth table, Added isActive and lastonlinetime"
@@ -12,17 +11,11 @@ class User(db.Model):
     last_name = db.Column(db.String(64))    
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True,unique=True)
-    _phone_number = db.Column(db.Unicode(255))
-    phone_country_code = db.Column(db.Unicode(8))
+    phone_number = db.Column(db.String(15))
 
-    phone_number = db.composite(
-        PhoneNumber,
-        _phone_number,
-        phone_country_code
-    )
     date_of_birth = db.Column(db.DateTime, index=True, nullable=False)
     created_datetime = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    password_hash = db.Column(db.String(128))
+    password_hash = db.Column(db.String(200),nullable=False)
     video_posts = db.relationship('VideoPost', backref='author', lazy='dynamic')
     is_active = db.Column(db.Boolean, unique=False, default=True)
     lastonline_time = db.Column(db.DateTime, index=True, default=datetime.utcnow)

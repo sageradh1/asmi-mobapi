@@ -1,6 +1,7 @@
 webapp_env
 project1_env
 .vscode
+migrations
 \_\_pycache\_\_
 darkflowDirectory
 *.mp4
