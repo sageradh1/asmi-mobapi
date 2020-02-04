@@ -8,8 +8,7 @@ API_Key=uuid.uuid4().hex
 print(API_Key)
 api_generatedTime = datetime.utcnow()
 api_expiry_date = api_generatedTime +timedelta(days=3650)
-print(api_generatedTime)
-print(api_expiry_date)
+
 
 try:
 	newKey = APIAuthKey(api_key=API_Key, generate_date=api_generatedTime,expiry_date=api_expiry_date)

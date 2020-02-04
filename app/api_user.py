@@ -23,12 +23,13 @@ def create_user():
 	try:
 		apikey=data["api_secrect_key"]
 		if apikey is None:
-			return jsonify({"message":"Unauthenticated Request",data:""})
+			return jsonify({"message":"Unauthenticated Request","data":""})
 		doesExist = APIAuthKey.query.filter_by(api_key=apikey).scalar() is not None
 		if not doesExist:
-			return jsonify({"message":"Unauthenticated Request",data:""})
+			return jsonify({"message":"Unauthenticated Request","data":""})
 	except Exception as err:
-		return jsonify({"message":"API Key Parsing Error","data":""})
+		print(err)
+		return jsonify({"message":"API Key Parsing Error","data":str(err)})
 
 	## Check Other Data Format
 	try:
@@ -113,10 +114,10 @@ def user_login():
 	try:
 		apikey=data["api_secrect_key"]
 		if apikey is None:
-			return jsonify({"message":"Unauthenticated Request",data:""})
+			return jsonify({"message":"Unauthenticated Request","data":""})
 		doesExist = APIAuthKey.query.filter_by(api_key=apikey).scalar() is not None
 		if not doesExist:
-			return jsonify({"message":"Unauthenticated Request",data:""})
+			return jsonify({"message":"Unauthenticated Request","data":""})
 	except Exception as err:
 		return jsonify({"message":"API Key Parsing Error","data":""})
 
@@ -184,10 +185,10 @@ def user_logout():
 	try:
 		apikey=data["api_secrect_key"]
 		if apikey is None:
-			return jsonify({"message":"Unauthenticated Request",data:""})
+			return jsonify({"message":"Unauthenticated Request","data":""})
 		doesExist = APIAuthKey.query.filter_by(api_key=apikey).scalar() is not None
 		if not doesExist:
-			return jsonify({"message":"Unauthenticated Request",data:""})
+			return jsonify({"message":"Unauthenticated Request","data":""})
 	except Exception as err:
 		return jsonify({"message":"API Key Parsing Error","data":""})
 
