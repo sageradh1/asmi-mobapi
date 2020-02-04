@@ -1,16 +1,9 @@
-# ASMI API
+# ASMI MOBILE API
 ## Version 1.0.0
 
-###### The latest requirements are included in :requirements2DInjectionMerge.txt
+###### Current Secret API key is c6fd54b7f4ad40ff9f1f75ab1ac77b10 
 
-###### Extra dependencies that are installed out of virtual env
-(or out of requirements2DInjectionMerge.txt):
-- Postgresql
-- Python 3.6.9
-
-
-###### Note These requirements are not be ignored:
-- Tensorflow version 1.13.2 or 1.14.0
+###### Since the api key might change throught the process, it is advisable to code in a standard config file (global/static config variable) structure so that whenever there is a change in API from server side, just changing api key in one place in the code side would work as well.
 
 ## API Documentation
 
