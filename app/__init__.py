@@ -39,4 +39,4 @@ from app.database import models
 # from app import public_views,admin_views,jinja_views,jsonHTTPDockerlearning_views
 
 # from app import public_views
-from app import public_views,api_user
+from app import public_views,api_user,api_videopost

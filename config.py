@@ -22,7 +22,7 @@ class Config(object):
     VIDEO_GENERATED_FOLDER =  basedir+"/app/static/video/generated"
     VIDEOANALYTICS_GENERATED_FOLDER =  basedir+"/app/static/analyticsFolder/generated"
     
-    MAX_VIDEO_FILESIZE = 16 * 1024 * 1024 #max allowed video filesize is 16MB
+    MAX_VIDEO_FILESIZE = 150 * 1024 * 1024 #max allowed video filesize is 16MB
     MAX_CSV_FILESIZE = 10 * 1024 * 1024 #max allowed csv filesize is 10MB
 
     ALLOWED_VIDEO_EXTENSIONS = set(['mp4', 'mkv'])
