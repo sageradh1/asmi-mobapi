@@ -5,6 +5,7 @@ migrations
 \_\_pycache\_\_
 darkflowDirectory
 darkflowMerge
+*.MP4
 *.mp4
 *.webm
 *.json
