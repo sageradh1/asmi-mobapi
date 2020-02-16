@@ -45,14 +45,14 @@ def post_video():
 		userid=data["userid"]
 		caption=data["caption"]
 		audio_info=data["audio_info"]
-		givenvideosizeinkb=int(data["videosizeinkb"])-1
+		givenvideosizeinkb=int(data["videosizeinkb"])
 	except Exception as err:
 		return jsonify({"message":"Invalid Data Format","data":""})
 
 	if givenvideosizeinkb>=app.config["MAX_VIDEO_FILESIZE"]:
 		return jsonify({"message":"Filesize limit exceeded","data":""})
 
-
+	
 	user = User.query.filter_by(id=userid).first()
 	if user is None:
 		return jsonify({"message":"Invalid User Request","data":""})
@@ -85,13 +85,10 @@ def post_video():
 	except Exception as err:
 		return jsonify({"message":"Database Access Error","data":""})
 
-
-
 	result={}
 	result["videoid"]=str(_uploadedVideoPost.id)
 	result["posterid"]=str(user.id)	
 	result["posterusername"]=str(user.username)
-
 	result["videofilename"]=str(_uploadedVideoPost.filename)	
 	result["upload_started_time"]=str(_uploadedVideoPost.upload_started_time)
 	result["upload_completed_time"]=str(_uploadedVideoPost.upload_completed_time)

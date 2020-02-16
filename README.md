@@ -145,7 +145,7 @@
 	```javascript
 		{
 			"api_secrect_key":"your valid secret key",
-			"username":"username",
+			"email":"username",
 			"password":"somepassword"
 		}
 	```
@@ -235,9 +235,9 @@
 		KEY					VALUE
 		videofile		= Actualfile		
 		api_secrect_key	= "your valid secret key"
-		videosizeinkb	= 100000000
-		userid			= 1     <=== The Poster ID
-		caption 		= "Video caption",
+		videosizeinkb	= 111000 
+		userid			= 1         (<=== The Poster ID..please notice only alogged in user can post the video)
+		caption 		= "Here is some string as a video caption",
 		audio_info	 	= "Diary of Jane by Breaking Benjamin"
 	```
 
@@ -280,7 +280,7 @@
 			  "message": "Filesize limit exceeded"
 			}
 		```
-		When the userid doesnot exist or is offline:
+		When the userid doesnot exist or is not logged in yet:
 		```javascript
 			{
 			  "data": "",
