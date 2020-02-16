@@ -145,7 +145,7 @@
 	```javascript
 		{
 			"api_secrect_key":"your valid secret key",
-			"email":"username",
+			"email":"desktop1@domain.com",
 			"password":"somepassword"
 		}
 	```
