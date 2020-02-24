@@ -11,8 +11,8 @@ from sqlalchemy import exists,or_,and_
 
 @app.route("/api/create-user",methods=['POST'])
 def create_user():
-	if request.headers["Content-Type"]!="application/json":
-		return jsonify({"message":"Invalid Request Header","data":""})
+	# if request.headers["Content-Type"]!="application/json":
+	# 	return jsonify({"message":"Invalid Request Header","data":""})
 
 	if request.data is None:
 		return jsonify({"message":"Invalid Request","data":""})		
@@ -100,10 +100,10 @@ def create_user():
 		return jsonify({"message":"Database Storing Error","data":""})
 
 
-@app.route("/api/user-login",methods=['GET'])
+@app.route("/api/user-login",methods=['GET','POST'])
 def user_login():
-	if request.headers["Content-Type"]!="application/json":
-		return jsonify({"message":"Invalid Request Header","data":""})
+	# if request.headers["content-type"]!="application/json" or request.headers["Content-Type"]!="application/json":
+	# 	return jsonify({"message":"Invalid Request Header","data":""})
 
 	if request.data is None:
 		return jsonify({"message":"Invalid Request","data":""})		
@@ -171,10 +171,10 @@ def user_login():
 
 
 
-@app.route("/api/user-logout",methods=['GET'])
+@app.route("/api/user-logout",methods=['GET','POST'])
 def user_logout():
-	if request.headers["Content-Type"]!="application/json":
-		return jsonify({"message":"Invalid Request Header","data":""})
+	# if request.headers["Content-Type"]!="application/json":
+	# 	return jsonify({"message":"Invalid Request Header","data":""})
 
 	if request.data is None:
 		return jsonify({"message":"Invalid Request","data":""})		
