@@ -24,6 +24,7 @@ def create_user():
 		apikey=data["api_secrect_key"]
 		if apikey is None:
 			return jsonify({"message":"Unauthenticated Request","data":""})
+
 		doesExist = APIAuthKey.query.filter_by(api_key=apikey).scalar() is not None
 		if not doesExist:
 			return jsonify({"message":"Unauthenticated Request","data":""})
