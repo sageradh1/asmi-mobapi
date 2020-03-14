@@ -328,54 +328,9 @@
 	      "videoid": 14,
 	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003100652591583427463073.mp4"
 	    },
-	    {
-	      "audio_info": "Audio info",
-	      "caption": "Video Caption",
-	      "poster_email": "desktop1@domain.com",
-	      "poster_id": 2,
-	      "videoid": 13,
-	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003100651141583427463073.mp4"
-	    },
-	    {
-	      "audio_info": "Audio info",
-	      "caption": "Video Caption",
-	      "poster_email": "desktop1@domain.com",
-	      "poster_id": 2,
-	      "videoid": 12,
-	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003100650121583427463073.mp4"
-	    },
-	    {
-	      "audio_info": "Audio info",
-	      "caption": "Video Caption",
-	      "poster_email": "desktop1@domain.com",
-	      "poster_id": 2,
-	      "videoid": 11,
-	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003100648041583427463073.mp4"
-	    },
-	    {
-	      "audio_info": "Audio info",
-	      "caption": "Video Caption",
-	      "poster_email": "desktop1@domain.com",
-	      "poster_id": 2,
-	      "videoid": 10,
-	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003100639371583427463073.mp4"
-	    },
-	    {
-	      "audio_info": "Audio info",
-	      "caption": "Video Caption",
-	      "poster_email": "desktop1@domain.com",
-	      "poster_id": 2,
-	      "videoid": 9,
-	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003100621141583427463073.mp4"
-	    },
-	    {
-	      "audio_info": "Audio info",
-	      "caption": "Video Caption",
-	      "poster_email": "desktop1@domain.com",
-	      "poster_id": 2,
-	      "videoid": 8,
-	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003100617551583427463073.mp4"
-	    },
+		.
+		.
+		.
 	    {
 	      "audio_info": "AllBirds song",
 	      "caption": "AllBirds Shoes",
@@ -398,32 +353,34 @@
 	```
 	* Error:
 
-		When Request header doesnot contain "multipart/form-data":
-		```javascript
-			{
-				"message": "Invalid Request Header",
-			  	"data": ""
-			}
-		```
-		When the userid,caption,audio_info and givenvideosizeinkb are missing:
+		When api key is invalid:
 		```javascript
 			{
 			  "data": "",
-			  "message": "Invalid Data Format"
+			  "message": "Unauthenticated Request"
 			}
 		```
-		When the videofile is too large:
-		** Please apply Video Compression (less than 150 MegaBytes)from the app-side so that there is no need to transfer that a big file through transfer Protocols via Internet ** 
+
+		When api key field is left empty:
 		```javascript
 			{
 			  "data": "",
-			  "message": "Filesize limit exceeded"
+			  "message": "API Key Parsing Error"
 			}
 		```
+
 		When the userid doesnot exist or is not logged in yet:
 		```javascript
 			{
 			  "data": "",
 			  "message": "Invalid User Request"
+			}
+		```
+
+		When lastvideoid is empty:
+		```javascript
+			{
+			  "data": "",
+			  "message": "Invalid Data Format"
 			}
 		```

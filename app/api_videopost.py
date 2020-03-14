@@ -97,6 +97,8 @@ def post_video():
 
 
 
+
+
 @app.route("/api/newsfeed-videoposts",methods=['POST'])
 def newsfeed_videoposts():
 	if request.data is None:
@@ -134,9 +136,6 @@ def newsfeed_videoposts():
 			latestvideoPostList=VideoPost.query.order_by(VideoPost.id.desc()).limit(10)
 		else:
 			latestvideoPostList=VideoPost.query.filter(VideoPost.id<lastvideoid).limit(10)
-
-		print("Required latestvideo id:",lastvideoid)
-		print("The latest videoposts are: ")
 
 		resultList=[]
 		for eachvideopost in latestvideoPostList:
