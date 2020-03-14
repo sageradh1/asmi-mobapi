@@ -42,7 +42,7 @@ def post_video():
 
 	#Make sure data is a number
 	try:
-		userid=data["userid"]
+		userid=int(data["userid"])
 		caption=data["caption"]
 		audio_info=data["audio_info"]
 		givenvideosizeinkb=int(data["videosizeinkb"])
@@ -52,7 +52,7 @@ def post_video():
 	if givenvideosizeinkb>=app.config["MAX_VIDEO_FILESIZE"]:
 		return jsonify({"message":"Filesize limit exceeded","data":""})
 
-	
+
 	user = User.query.filter_by(id=userid).first()
 	if user is None:
 		return jsonify({"message":"Invalid User Request","data":""})
@@ -94,3 +94,89 @@ def post_video():
 	result["upload_completed_time"]=str(_uploadedVideoPost.upload_completed_time)
 	
 	return jsonify({"message":"Success","data":result})
+
+
+
+@app.route("/api/newsfeed-videoposts",methods=['POST'])
+def newsfeed_videoposts():
+	if request.data is None:
+		return jsonify({"message":"Invalid Request","data":""})		
+
+	data = request.get_json()
+
+	## Check Authenticity of API Request
+	try:
+		apikey=data["api_secret_key"]
+		if apikey is None:
+			return jsonify({"message":"Unauthenticated Request","data":""})
+		doesExist = APIAuthKey.query.filter_by(api_key=apikey).scalar() is not None
+		if not doesExist:
+			return jsonify({"message":"Unauthenticated Request","data":""})
+	except Exception as err:
+		return jsonify({"message":"API Key Parsing Error","data":str(err)})
+
+	#Make sure data is a number
+	try:
+		userid=int(data["userid"])
+		lastvideoid=int(data["lastvideoid"])
+	except Exception as err:
+		return jsonify({"message":"Invalid Data Format","data":""})
+
+	user = User.query.filter_by(id=userid).first()
+	if (user is None):
+		return jsonify({"message":"Invalid User Request","data":""})
+	if not user.is_active:
+		return jsonify({"message":"Invalid User Request","data":""})
+
+	try:
+		latestvideoPost=[]
+		if lastvideoid==-1:
+			latestvideoPostList=VideoPost.query.order_by(VideoPost.id.desc()).limit(10)
+		else:
+			latestvideoPostList=VideoPost.query.order_by(VideoPost.id>lastvideoid).limit(10)
+
+		print("Required latestvideo id:",lastvideoid)
+		print("The latest videoposts are: ")
+
+		resultList=[]
+		for eachvideopost in latestvideoPostList:
+			resultObject={}
+			resultObject["videoid"]=eachvideopost.id
+			resultObject["videourl"]=app.config["BASE_URL"]+"/static/video/uploaded/"+eachvideopost.filename+"."+eachvideopost.extension
+			resultObject["caption"]=eachvideopost.caption
+			resultObject["audio_info"]=eachvideopost.audio_info
+			resultObject["poster_id"]=eachvideopost.user_id
+			poster = User.query.filter_by(id=eachvideopost.user_id).first()
+			if (user is None):
+				resultObject["poster_email"]=""
+			else:
+				resultObject["poster_email"]=poster.email
+
+			print(resultObject)
+			resultList.append(resultObject.copy())
+			
+# class VideoPost(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     filename = db.Column(db.String(100), unique=True)
+#     extension = db.Column(db.String(5))
+#     storagelocation = db.Column(db.String(500))
+#     upload_started_time = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+#     upload_completed_time = db.Column(db.DateTime, index=True, default=datetime.utcnow)    
+#     last_modified_time = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    
+#     caption = db.Column(db.String(440))
+#     audio_info=db.Column(db.String(200))
+#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+
+
+	except Exception as err:
+		print(err)
+		return jsonify({"message":"Database Access Error","data":""})
+
+	result=resultList
+	
+	return jsonify({"message":"Success","data":result})
+
+
+

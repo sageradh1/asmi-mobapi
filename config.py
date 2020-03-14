@@ -21,7 +21,8 @@ class Config(object):
     VIDEO_UPLOADS_FOLDER =  basedir+"/app/static/video/uploaded"
     VIDEO_GENERATED_FOLDER =  basedir+"/app/static/video/generated"
     VIDEOANALYTICS_GENERATED_FOLDER =  basedir+"/app/static/analyticsFolder/generated"
-    
+    BASE_URL= "18.221.137.201:8080"
+
     MAX_VIDEO_FILESIZE = 150 * 1024 #max allowed video filesize is 150MB
     MAX_CSV_FILESIZE = 10 * 1024 * 1024 #max allowed csv filesize is 10MB
 
