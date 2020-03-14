@@ -23,8 +23,8 @@ def post_video():
 	_videoUploadStartingTime=datetime.utcnow()
 	startingdt_string = _videoUploadStartingTime.strftime("%Y%m%d%H%M%S")
 
-	if "multipart/form-data" not in request.headers["Content-Type"]:
-		return jsonify({"message":"Invalid Request Header","data":""})
+	# if "multipart/form-data" not in request.headers["Content-Type"]:
+	# 	return jsonify({"message":"Invalid Request Header","data":""})
 
 	data = dict(request.form)
 
