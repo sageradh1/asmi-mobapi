@@ -287,3 +287,143 @@
 			  "message": "Invalid User Request"
 			}
 		```
+
+
+### 2.a Newsfeed VideoPost
+* **Type:** POST
+* **Url:** 18.221.137.201:8080/api/newsfeed-videoposts
+* **Request Header:**
+	 contentType: 'application/json'
+* **Request Body:**
+	```javascript
+	{
+	 "api_secret_key":"c6fd54b7f4ad40ff9f1f75ab1ac77b10",
+	 "userid":2,
+	 "lastvideoid":-1       <==== NOTE
+	 Suppose there are 20 videos in the database:
+	 If "lastvideoid":-1 is given, latest ten videoposts(i.e from videoid 20 , 19,...to ...11) will be returned.
+	 If you want older videoposts, then you can return foreg: lastvideoid=11 then videoposts(i.e from videoid 10 , 9,...to ...1) will be returned.
+	}
+	```
+
+
+* **Response:**
+	* Success:
+	```javascript
+	{
+	  "data": [
+	    {
+	      "audio_info": "Audio info",
+	      "caption": "Video Caption",
+	      "poster_email": "desktop1@domain.com",
+	      "poster_id": 2,
+	      "videoid": 15,
+	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003100657021583427463073.mp4"
+	    },
+	    {
+	      "audio_info": "Audio info",
+	      "caption": "Video Caption",
+	      "poster_email": "desktop1@domain.com",
+	      "poster_id": 2,
+	      "videoid": 14,
+	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003100652591583427463073.mp4"
+	    },
+	    {
+	      "audio_info": "Audio info",
+	      "caption": "Video Caption",
+	      "poster_email": "desktop1@domain.com",
+	      "poster_id": 2,
+	      "videoid": 13,
+	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003100651141583427463073.mp4"
+	    },
+	    {
+	      "audio_info": "Audio info",
+	      "caption": "Video Caption",
+	      "poster_email": "desktop1@domain.com",
+	      "poster_id": 2,
+	      "videoid": 12,
+	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003100650121583427463073.mp4"
+	    },
+	    {
+	      "audio_info": "Audio info",
+	      "caption": "Video Caption",
+	      "poster_email": "desktop1@domain.com",
+	      "poster_id": 2,
+	      "videoid": 11,
+	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003100648041583427463073.mp4"
+	    },
+	    {
+	      "audio_info": "Audio info",
+	      "caption": "Video Caption",
+	      "poster_email": "desktop1@domain.com",
+	      "poster_id": 2,
+	      "videoid": 10,
+	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003100639371583427463073.mp4"
+	    },
+	    {
+	      "audio_info": "Audio info",
+	      "caption": "Video Caption",
+	      "poster_email": "desktop1@domain.com",
+	      "poster_id": 2,
+	      "videoid": 9,
+	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003100621141583427463073.mp4"
+	    },
+	    {
+	      "audio_info": "Audio info",
+	      "caption": "Video Caption",
+	      "poster_email": "desktop1@domain.com",
+	      "poster_id": 2,
+	      "videoid": 8,
+	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003100617551583427463073.mp4"
+	    },
+	    {
+	      "audio_info": "AllBirds song",
+	      "caption": "AllBirds Shoes",
+	      "poster_email": "desktop1@domain.com",
+	      "poster_id": 2,
+	      "videoid": 7,
+	      "videourl": "18.221.137.201:8080/static/video/uploaded/20200307070429viz.mp4"
+	    },
+	    {
+	      "audio_info": "\"Herey Moti2 \" presented by Kailash Kher",
+	      "caption": "This is test video 3",
+	      "poster_email": "desktop1@domain.com",
+	      "poster_id": 2,
+	      "videoid": 6,
+	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003070656141974 AD - Jati Maya Laye Pani (Audio_Lyrics).mp4"
+	    }
+	  ],
+	  "message": "Success"
+	}
+	```
+	* Error:
+
+		When Request header doesnot contain "multipart/form-data":
+		```javascript
+			{
+				"message": "Invalid Request Header",
+			  	"data": ""
+			}
+		```
+		When the userid,caption,audio_info and givenvideosizeinkb are missing:
+		```javascript
+			{
+			  "data": "",
+			  "message": "Invalid Data Format"
+			}
+		```
+		When the videofile is too large:
+		** Please apply Video Compression (less than 150 MegaBytes)from the app-side so that there is no need to transfer that a big file through transfer Protocols via Internet ** 
+		```javascript
+			{
+			  "data": "",
+			  "message": "Filesize limit exceeded"
+			}
+		```
+		When the userid doesnot exist or is not logged in yet:
+		```javascript
+			{
+			  "data": "",
+			  "message": "Invalid User Request"
+			}
+		```

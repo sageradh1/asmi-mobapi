@@ -133,7 +133,7 @@ def newsfeed_videoposts():
 		if lastvideoid==-1:
 			latestvideoPostList=VideoPost.query.order_by(VideoPost.id.desc()).limit(10)
 		else:
-			latestvideoPostList=VideoPost.query.order_by(VideoPost.id>lastvideoid).limit(10)
+			latestvideoPostList=VideoPost.query.filter_by(VideoPost.id<lastvideoid).limit(10)
 
 		print("Required latestvideo id:",lastvideoid)
 		print("The latest videoposts are: ")
@@ -154,21 +154,6 @@ def newsfeed_videoposts():
 
 			print(resultObject)
 			resultList.append(resultObject.copy())
-			
-# class VideoPost(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     filename = db.Column(db.String(100), unique=True)
-#     extension = db.Column(db.String(5))
-#     storagelocation = db.Column(db.String(500))
-#     upload_started_time = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-#     upload_completed_time = db.Column(db.DateTime, index=True, default=datetime.utcnow)    
-#     last_modified_time = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    
-#     caption = db.Column(db.String(440))
-#     audio_info=db.Column(db.String(200))
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-
 
 	except Exception as err:
 		print(err)
