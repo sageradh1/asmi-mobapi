@@ -133,7 +133,7 @@ def newsfeed_videoposts():
 		if lastvideoid==-1:
 			latestvideoPostList=VideoPost.query.order_by(VideoPost.id.desc()).limit(10)
 		else:
-			latestvideoPostList=VideoPost.query.filter_by(VideoPost.id<lastvideoid).limit(10)
+			latestvideoPostList=VideoPost.query.filter(VideoPost.id<lastvideoid).limit(10)
 
 		print("Required latestvideo id:",lastvideoid)
 		print("The latest videoposts are: ")
