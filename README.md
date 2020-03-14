@@ -289,7 +289,7 @@
 		```
 
 
-### 2.a Newsfeed VideoPost
+### 2.b Newsfeed VideoPost
 * **Type:** POST
 * **Url:** 18.221.137.201:8080/api/newsfeed-videoposts
 * **Request Header:**
