@@ -7,6 +7,10 @@
 
 ## API Documentation
 
+### Latest change : 
+	- Added jsonurl field to 2.bNewsfeed VideoPost
+
+
 ### Defaults:
 	By default, these REST APIs will have the following usages and error responses.
 	If unstated, these guidelines are applicable for all the apis.
@@ -311,44 +315,40 @@
 	* Success:
 	```javascript
 	{
-	  "data": [
-	    {
-	      "audio_info": "Audio info",
-	      "caption": "Video Caption",
-	      "poster_email": "desktop1@domain.com",
-	      "poster_id": 2,
-	      "videoid": 15,
-	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003100657021583427463073.mp4"
-	    },
-	    {
-	      "audio_info": "Audio info",
-	      "caption": "Video Caption",
-	      "poster_email": "desktop1@domain.com",
-	      "poster_id": 2,
-	      "videoid": 14,
-	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003100652591583427463073.mp4"
-	    },
-		.
-		.
-		.
-	    {
-	      "audio_info": "AllBirds song",
-	      "caption": "AllBirds Shoes",
-	      "poster_email": "desktop1@domain.com",
-	      "poster_id": 2,
-	      "videoid": 7,
-	      "videourl": "18.221.137.201:8080/static/video/uploaded/20200307070429viz.mp4"
-	    },
-	    {
-	      "audio_info": "\"Herey Moti2 \" presented by Kailash Kher",
-	      "caption": "This is test video 3",
-	      "poster_email": "desktop1@domain.com",
-	      "poster_id": 2,
-	      "videoid": 6,
-	      "videourl": "18.221.137.201:8080/static/video/uploaded/202003070656141974 AD - Jati Maya Laye Pani (Audio_Lyrics).mp4"
-	    }
-	  ],
-	  "message": "Success"
+		"data": [
+			{
+				"audio_info": "Audio info",
+				"caption": "hjvjvvi",
+				"jsonurl": "18.221.137.201:8080/static/analyticsFolder/generated/static.json",
+				"poster_email": "desktop1@domain.com",
+				"poster_id": 2,
+				"videoid": 26,
+				"videourl": "18.221.137.201:8080/static/video/uploaded/202004161652351583427463073.mp4"
+			},
+			{
+				"audio_info": "Audio info",
+				"caption": "",
+				"jsonurl": "18.221.137.201:8080/static/analyticsFolder/generated/static.json",
+				"poster_email": "desktop1@domain.com",
+				"poster_id": 2,
+				"videoid": 25,
+				"videourl": "18.221.137.201:8080/static/video/uploaded/202004161642511583427463073.mp4"
+			},
+			.
+			.
+			.
+			.
+			{
+				"audio_info": "Audio info",
+				"caption": "Video Caption",
+				"jsonurl": "18.221.137.201:8080/static/analyticsFolder/generated/static.json",
+				"poster_email": "desktop1@domain.com",
+				"poster_id": 2,
+				"videoid": 17,
+				"videourl": "18.221.137.201:8080/static/video/uploaded/202003211520361583427463073.mp4"
+			}
+		],
+		"message": "Success"
 	}
 	```
 	* Error:
