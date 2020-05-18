@@ -151,6 +151,9 @@ def newsfeed_videoposts():
 			else:
 				resultObject["poster_email"]=poster.email
 
+			#TODO after AI part is integrated
+			resultObject["jsonurl"]=app.config["BASE_URL"]+"static/analyticsFolder/generated/static.json"
+
 			print(resultObject)
 			resultList.append(resultObject.copy())
 
